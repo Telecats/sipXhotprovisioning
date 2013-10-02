@@ -1,0 +1,56 @@
+###################
+sipXhotprovisioning
+###################
+
+-------
+Content
+-------
+Introduction
+Features
+Source
+Requirements
+Usage
+
+
+------------
+Introduction
+------------
+Rebooting your phones to update settings is sometimes very undesirable especially when it is not needed.
+Some phones offer special features so settings can be updated without the need of rebooting the phone.
+
+The submodule sipXhotprovisioning provides hook to implement this vendor specific updating of settings
+without rebooting the pone.
+
+--------
+Features
+--------
+- provisioning using reboot provisioning (should work for "all" phones)
+
+------
+SOURCE
+------
+https://github.com/Telecats/sipXhotprovisioning
+
+
+------------
+Requirements
+------------
+- Correct building sipXecs 4.6, see: https://github.com/dhubler
+  (sipXhotdeskingTc depends on sipXrest)
+
+
+-----
+Usage
+-----
+git submodule add https://github.com/Telecats/sipXhotprovisioning.git
+git submodule init
+git submodule update
+
+add 'sipXhotprovisioning' to your build/modules-include file BEFORE $(sipx_config) and your phones
+
+For example:
+$(sipx_core) sipXhotprovisioning sipXrest sipXhotdeskingTc sipXyealinkTc  $(sipx_config) 
+
+start building...
+
+DONE
