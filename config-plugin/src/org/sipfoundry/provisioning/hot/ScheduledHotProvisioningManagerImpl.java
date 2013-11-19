@@ -116,7 +116,7 @@ public class ScheduledHotProvisioningManagerImpl implements HotProvisioningManag
 
         public void run() {
             Device device = m_deviceSource.loadDevice(m_deviceId);
-            String jobName = "HotProvision: " + device.getNiceName();
+            String jobName = "HotProvision : " + device.getNiceName() + " ("+device.getModelId()+")";
             LOG.debug("Running HotProvisionTask, jobName:"+jobName+"...");
             Serializable jobId = m_jobContext.schedule(jobName);
             try {
@@ -127,7 +127,6 @@ public class ScheduledHotProvisioningManagerImpl implements HotProvisioningManag
                     m_jobContext.success(jobId);
                     LOG.debug("performing hotprovisioning...done");
                 } else {
-                    //TODO_ RD check modelId is usefull in logging
                     LOG.error("device not hotprovisionable, Bailing out !!! device:"+device.getModelId());
                 }
             } catch (RestartException e) {
